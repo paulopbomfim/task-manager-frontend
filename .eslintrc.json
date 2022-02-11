@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "js": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "eslint-plugin-import-helpers"
+    ],
+    "rules": {
+        "camelcase": [2, {
+            "properties": "always",
+            "ignoreImports": true,
+            "ignoreDestructuring": true
+        }],
+        "semi": [2, "always"],
+        "quotes": [2, "single"],
+        "jsx-quotes": [2, "prefer-double"],
+        "import/prefer-default-export": 0,
+        "react/react-in-jsx-scope": 0,
+        "key-spacing": [2, {
+            "beforeColon": false,
+            "afterColon": true
+        }],
+        "keyword-spacing": [2, {
+            "before": true,
+            "after": true
+        }],
+        "indent": [2, 2],
+        "array-bracket-spacing": [2, "never"],
+        "object-curly-spacing": [2, "always"],
+        "no-trailing-spaces": 2,
+        "prefer-template": 2,
+        "arrow-parens": [2, "always"],
+        "arrow-spacing": [2, { "before": true, "after": true }],
+        "comma-spacing": [2, { "before": false, "after": true }]
+    }
+}

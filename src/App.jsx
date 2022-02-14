@@ -1,7 +1,11 @@
+import { NewTask } from './components/NewTask';
+
+import './styles/global.scss';
+
 export function App() {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <main>
+      <NewTask />
+    </main>
   );
 }

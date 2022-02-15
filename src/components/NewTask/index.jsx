@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 import AddImg from '../../assets/add.svg';
 
-export function NewTask() {
+export function NewTask({ inputEntry, onInputChange, onCreateNewTask }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
 
   return !isAddingNewTask
@@ -18,8 +19,25 @@ export function NewTask() {
     )
     : (
       <div>
-        <input type="text" placeholder="Nova tarefa" />
-        <button type="button" data-testid="addTaskButton">Adicionar tarefa</button>
+        <input
+          type="text"
+          placeholder="Nova tarefa"
+          value={inputEntry}
+          onChange={(event) => onInputChange(event.target.value)}
+        />
+        <button
+          type="button"
+          data-testid="addTaskButton"
+          onClick={onCreateNewTask}
+        >
+          Adicionar tarefa
+        </button>
       </div>
     );
 }
+
+NewTask.propTypes = {
+  inputEntry: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onCreateNewTask: PropTypes.func.isRequired,
+};

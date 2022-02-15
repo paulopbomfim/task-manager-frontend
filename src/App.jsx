@@ -30,14 +30,26 @@ export function App() {
     ]);
   }
 
+  async function handleDeleteTask(id) {
+    await api.delete(`/tasks/${id}`);
+    const tasks = apiData;
+
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+
+    setApiData(filteredTasks);
+  }
+
   return (
     <main>
       <NewTask
         inputEntry={inputEntry}
         onInputChange={setInputEntry}
-        onCreateNewTask={() => handleCreateNewTask()}
+        onRequestCreateNewTask={() => handleCreateNewTask()}
       />
-      <AllTasks apiData={apiData} />
+      <AllTasks
+        apiData={apiData}
+        onRequestDeleteTask={(id) => handleDeleteTask(id)}
+      />
     </main>
   );
 }

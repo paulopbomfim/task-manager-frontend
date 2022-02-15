@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 import AddImg from '../../assets/add.svg';
 
-export function NewTask({ inputEntry, onInputChange, onCreateNewTask }) {
+export function NewTask({ inputEntry, onInputChange, onRequestCreateNewTask }) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
 
   return !isAddingNewTask
@@ -28,7 +28,7 @@ export function NewTask({ inputEntry, onInputChange, onCreateNewTask }) {
         <button
           type="button"
           data-testid="addTaskButton"
-          onClick={onCreateNewTask}
+          onClick={onRequestCreateNewTask}
         >
           Adicionar tarefa
         </button>
@@ -39,5 +39,5 @@ export function NewTask({ inputEntry, onInputChange, onCreateNewTask }) {
 NewTask.propTypes = {
   inputEntry: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  onCreateNewTask: PropTypes.func.isRequired,
+  onRequestCreateNewTask: PropTypes.func.isRequired,
 };

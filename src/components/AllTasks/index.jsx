@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 
 import TrashImg from '../../assets/trash.svg';
 
-export function AllTasks({ apiData }) {
+export function AllTasks({ apiData, onRequestDeleteTask }) {
   return (
     <div>
       <table>
@@ -29,6 +29,7 @@ export function AllTasks({ apiData }) {
                 <td>
                   <button
                     type="button"
+                    onClick={() => onRequestDeleteTask(data.id)}
                   >
                     <img src={TrashImg} alt="Remover tarefa" />
                   </button>
@@ -44,4 +45,5 @@ export function AllTasks({ apiData }) {
 
 AllTasks.propTypes = {
   apiData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRequestDeleteTask: PropTypes.func.isRequired,
 };

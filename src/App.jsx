@@ -39,6 +39,12 @@ export function App() {
     setApiData(filteredTasks);
   }
 
+  async function handleUpdateTaskStatus(id, status) {
+    const { data: { tasks } } = await api.patch(`/tasks/${id}/${status}`);
+
+    setApiData(tasks);
+  }
+
   return (
     <main>
       <NewTask
@@ -49,6 +55,7 @@ export function App() {
       <AllTasks
         apiData={apiData}
         onRequestDeleteTask={(id) => handleDeleteTask(id)}
+        onRequestUpdateTaskStatus={(id, status) => handleUpdateTaskStatus(id, status)}
       />
     </main>
   );

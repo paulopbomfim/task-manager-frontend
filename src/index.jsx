@@ -48,10 +48,17 @@ createServer({
 
     this.del('/tasks/:id', (schema, request) => {
       const { id } = request.params;
-      console.log(id);
 
       const task = schema.find('task', id);
-      task.destroy();
+      return task.destroy();
+    });
+
+    this.patch('/tasks/:id/:status', (schema, request) => {
+      const { id, status } = request.params;
+
+      const task = schema.find('task', id);
+      task.update({ status });
+      return schema.all('task');
     });
   },
 });

@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 
 import TrashImg from '../../assets/trash.svg';
 
-export function AllTasks({ apiData, onRequestDeleteTask }) {
+export function AllTasks({ apiData, onRequestDeleteTask, onRequestUpdateTaskStatus }) {
   return (
     <div>
       <table>
@@ -20,7 +20,10 @@ export function AllTasks({ apiData, onRequestDeleteTask }) {
                 <td>{data.description}</td>
                 <td>{data.createdAt}</td>
                 <td>
-                  <select value={data.status}>
+                  <select
+                    value={data.status}
+                    onChange={({ target }) => onRequestUpdateTaskStatus(data.id, target.value)}
+                  >
                     <option value="pending">Pendente</option>
                     <option value="doing">Em andamento</option>
                     <option value="complete">Concluído</option>
@@ -46,4 +49,5 @@ export function AllTasks({ apiData, onRequestDeleteTask }) {
 AllTasks.propTypes = {
   apiData: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRequestDeleteTask: PropTypes.func.isRequired,
+  onRequestUpdateTaskStatus: PropTypes.func.isRequired,
 };

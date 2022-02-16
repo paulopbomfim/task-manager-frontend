@@ -2,11 +2,11 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { NewTask } from '../components/NewTask';
+import { App } from '../App';
 
 describe('Test new task component', () => {
   it('Should render the entry input', () => {
-    render(<NewTask />);
+    render(<App />);
 
     const newTaskButton = screen.getByTestId('newTaskButton') ;
     fireEvent.click(newTaskButton);
@@ -15,7 +15,7 @@ describe('Test new task component', () => {
   });
   
   it('Should render the add task button', () => {
-    render(<NewTask />);
+    render(<App />);
 
     const newTaskButton = screen.getByTestId('newTaskButton') ;
     fireEvent.click(newTaskButton);

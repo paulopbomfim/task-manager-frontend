@@ -45,6 +45,21 @@ createServer({
       data.createdAt = new Date();
       return schema.create('task', data);
     });
+
+    this.del('/tasks/:id', (schema, request) => {
+      const { id } = request.params;
+
+      const task = schema.find('task', id);
+      return task.destroy();
+    });
+
+    this.patch('/tasks/:id/:status', (schema, request) => {
+      const { id, status } = request.params;
+
+      const task = schema.find('task', id);
+      task.update({ status });
+      return schema.all('task');
+    });
   },
 });
 
